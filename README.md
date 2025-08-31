@@ -2,6 +2,34 @@
 
 A desktop e-commerce management system built with C# and Windows Forms that provides a complete solution for managing sellers, buyers, and products in an e-commerce environment.
 
+## Important Note for Downloaded Repository
+
+If you downloaded this repository and Visual Studio failed to process .resx files with errors like:
+
+```
+Couldn't process file ... due to its being in the Internet or Restricted zone or having the mark of the web on the file. Remove the mark of the web if you want to process these files.
+```
+
+This is caused by Windows' "Mark of the Web" (Zone.Identifier) on files downloaded from the internet. Visual Studio refuses to load some resource files in that state. Use one of the quick fixes below.
+
+### Recommended fixes (pick one)
+
+**1) Unblock the ZIP before extracting (recommended)**
+- Right-click the downloaded .zip → Properties
+- If you see "This file came from another computer..." check "Unblock" → Apply
+- Extract the zip. Extracted files will no longer be blocked.
+
+**2) PowerShell — unblock .resx files in your project folder (recursive)**
+Open PowerShell (as your user) and run from the project root:
+```powershell
+Get-ChildItem -Recurse -Path . | Unblock-File
+```
+
+**3) Alternative PowerShell command for .resx files only:**
+```powershell
+Get-ChildItem -Recurse -Path . -Filter "*.resx" | Unblock-File
+```
+
 ## Project Overview
 
 This application serves as a management platform for e-commerce operations, allowing administrators to:
@@ -9,6 +37,14 @@ This application serves as a management platform for e-commerce operations, allo
 - Handle product catalog management with support for standard and special products
 - Process buyer-seller transactions
 - Maintain persistent data storage via file-based serialization
+
+### Persistence (file-based "database")
+
+This project persistently stores sellers and products in a plain text file (`Sellers.txt`) when the application closes and loads it on startup. That behavior is implemented in the main form methods:
+- [`MiniProject.MainForm.SaveDataToFile`](MiniProject/MainForm.cs)
+- [`MiniProject.MainForm.LoadDataFromFile`](MiniProject/MainForm.cs)
+
+Because all data is serialized to and read from a text file, the application mimics a simple database: data survives application restarts but there is no SQL engine or ACID guarantees. The text file acts as the single source of truth and is located in the application working directory.
 
 ## Features
 
