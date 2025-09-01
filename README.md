@@ -2,6 +2,20 @@
 
 A desktop e-commerce management system built with C# and Windows Forms that provides a complete solution for managing sellers, buyers, and products in an e-commerce environment.
 
+## Screenshots
+
+Main form:  
+![Main](docs/images/Main.png)
+
+Seller form example:  
+![Seller Form](docs/images/FormExample_Seller.png)
+
+Add product example:  
+![Add Product](docs/images/AddProductExample.png)
+
+Data display (all data view):  
+![Data Display](docs/images/Data%20display.png)
+
 ## Important Note for Downloaded Repository
 
 If you downloaded this repository and Visual Studio failed to process .resx files with errors like:
