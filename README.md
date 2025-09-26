@@ -182,9 +182,7 @@ The application automatically saves seller and product data to `Sellers.txt` in 
 - Ron Blanki
 - Eden Gavrialov
 
-## License
-
-This project is developed as part of an academic assignment.
+## This project is developed as part of an academic assignment.
 
 ---
 
